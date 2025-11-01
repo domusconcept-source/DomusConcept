@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DomusConcept Admin</title>
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+  <div class="container">
+    <h1 id="admin-title">DomusConcept <span>Admin Panel</span></h1>
+
+    <!-- Seksioni i hyrjes -->
+    <div id="login-section" class="card">
+      <h3>Hyr me username & password</h3>
+      <input type="text" id="admin-user" class="input" placeholder="Username">
+      <input type="password" id="admin-pass" class="input" placeholder="Password">
+      <button id="login-btn" class="btn">Hyr</button>
+    </div>
+
+    <!-- Paneli i administrimit -->
+    <div id="admin-panel" class="card" style="display:none;">
+      <h3>Shto Tokë të Re</h3>
+
+      <input type="text" id="prop-title" class="input" placeholder="Titulli">
+      <input type="text" id="prop-price" class="input" placeholder="Çmimi">
+
+      <!-- Qyteti si select -->
+      <select id="prop-city" class="input">
+        <option value="" disabled selected>Zgjidh qytetin</option>
+        <option value="Prishtinë">Prishtinë</option>
+        <option value="Prizren">Prizren</option>
+        <option value="Pejë">Pejë</option>
+        <option value="Gjakovë">Gjakovë</option>
+        <option value="Ferizaj">Ferizaj</option>
+        <option value="Gjilan">Gjilan</option>
+        <option value="Mitrovicë">Mitrovicë</option>
+        <option value="Vushtrri">Vushtrri</option>
+        <option value="Suharekë">Suharekë</option>
+        <option value="Podujevë">Podujevë</option>
+      </select>
+
+      <textarea id="prop-desc" class="input" placeholder="Përshkrimi"></textarea>
+      <input type="text" id="prop-images" class="input" placeholder="Emrat e fotove, të ndara me ','">
+      <button id="add-prop" class="btn">Shto Tokë</button>
+
+      <h3>Lista e Tokave</h3>
+      <div id="admin-property-list"></div>
+    </div>
+  </div>
+
+  <!-- ================= FIREBASE & ADMIN JS ================= -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+    import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+
+    // ✅ Konfigurimi i Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyBgPJ5SlL_H1z26oBD180CKwuQyWYmLg80",
+      authDomain: "domusconcept-63ff7.firebaseapp.com",
+      projectId: "domusconcept-63ff7",
+      storageBucket: "domusconcept-63ff7.firebasestorage.app",
+      messagingSenderId: "811986922767",
+      appId: "1:811986922767:web:25f522659b5ac07b9be27a"
+    };
+
+    // ✅ Inicializo aplikacionin & Firestore
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    // ✅ Importo admin.js dhe fillo panelin
+    import { startAdminPanel } from "./js/admin.js";
+    startAdminPanel(db, { collection, addDoc, getDocs, deleteDoc, doc });
+  </script>
+</body>
+</html>
