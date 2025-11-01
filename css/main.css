@@ -1,0 +1,200 @@
+/* Reset dhe body */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Hero me slider */
+.hero {
+    position: relative;
+    color: white;
+    padding: 100px 20px;
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+}
+/* Logo në header */
+.logo {
+    max-width: 50px; /* madhësia maksimale */
+    height: auto;
+    display: block;
+    margin: 0 auto; /* qendro në mes */
+}
+
+
+.hero::after {
+    content: "";
+    position: absolute;
+    top:0; left:0; right:0; bottom:0;
+    background: rgba(0,0,0,0.4);
+}
+
+.hero .container {
+    position: relative;
+}
+
+.hero-slide {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top:0;
+    left:0;
+    background-size: cover;
+    background-position: center;
+    transition: opacity 1s ease-in-out;
+    opacity: 0;
+}
+
+.hero-slide.active {
+    opacity: 1;
+}
+
+/* Top Buttons Home dhe Contact */
+#top-buttons {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+    z-index: 1000;
+}
+
+#top-buttons button {
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    border-radius: 0.5em;
+    padding: 0;
+    background: #000;
+}
+
+#top-buttons button .button_top {
+    display: block;
+    border: 2px solid #000;
+    border-radius: 0.5em;
+    padding: 0.5em 1em;
+    background: #e8e8e8;
+    color: #000;
+    transition: transform 0.1s ease;
+}
+
+#top-buttons button:hover .button_top {
+    transform: translateY(-0.15em);
+}
+
+#top-buttons button:active .button_top {
+    transform: translateY(0);
+}
+
+/* Filter container */
+.filter {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 20px 0;
+    padding: 0 20px;
+    gap: 10px;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.filter label {
+    margin-right: 5px;
+}
+
+.filter select {
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+/* Pronat */
+.properties {
+    padding: 60px 20px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.property-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+}
+
+/* Cards */
+.property-card {
+    background: #16161d;
+    border: 2px solid #555;
+    border-radius: 12px;
+    color: #fff;
+    width: 280px;
+    padding: 15px;
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    cursor: pointer;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+.property-card:hover {
+    transform: translateZ(15px) rotateX(8deg) rotateY(8deg);
+    box-shadow: 0px 12px 25px rgba(0,0,0,0.3);
+}
+
+.property-card img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.property-card h3 {
+    color: #f2a541;
+    margin-top: 8px;
+}
+
+.property-card p {
+    font-size: 0.9em;
+    color: #ddd;
+}
+
+/* Animim */
+@keyframes fadeInUp {
+    to { opacity: 1; transform: translateY(0); }
+}
+/* =================== Search Bar CSS =================== */
+/* From Uiverse.io by garerim */ 
+.container-input {
+    position: relative;
+}
+
+.input {
+    width: 150px;
+    padding: 10px 0px 10px 40px;
+    border-radius: 9999px;
+    border: solid 1px #333;
+    transition: all .2s ease-in-out;
+    outline: none;
+    opacity: 0.8;
+    font-size: 16px; /* ✅ Parandalon zoom-in në telefon */
+    -webkit-text-size-adjust: 100%; /* i mban dimensionet fikse në Safari */
+}
+
+
+.container-input svg {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translate(0, -50%);
+}
+
+.input:focus {
+    opacity: 1;
+    width: 250px;
+}
+
